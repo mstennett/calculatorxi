@@ -11,13 +11,14 @@ class Calculator extends React.Component {
   }
 
   componentWillMount() {
+    const cal_state = { ...this.state }
     this.setState({
-      total: this.state.total,
-      keyPadSum: this.state.keyPadSum,
-      display: this.state.display,
-      action: this.state.action
+      total: cal_state.total,
+      keyPadSum: cal_state.keyPadSum,
+      display: cal_state.display,
+      action: cal_state.action
     })
-    console.log('componentWillMount:', this.state);
+    //console.log('componentWillMount:', cal_state);
   }  
 
   clearkeyPadSum = () => {
@@ -31,7 +32,7 @@ class Calculator extends React.Component {
     action: 'add'
     })
     this.clearkeyPadSum();
-    console.log(this.state);
+    // console.log(this.state);
   }
   subtract = () => {
     this.setState({
@@ -39,7 +40,7 @@ class Calculator extends React.Component {
     action: 'subtract'
     })
     this.clearkeyPadSum();
-    console.log(this.state);
+    // console.log(this.state);
   }
   multiply = () => {
     this.setState({
@@ -47,7 +48,7 @@ class Calculator extends React.Component {
     action: 'multiply'
     })
     this.clearkeyPadSum();
-    console.log(this.state);
+    // console.log(this.state);
   }
   divide = () => {
     this.setState({
@@ -55,7 +56,7 @@ class Calculator extends React.Component {
     action: 'divide'
     })
     this.clearkeyPadSum();
-    console.log(this.state);
+    // console.log(this.state);
   }
   equal = () => {
     if (this.state.action === 'add'){
@@ -79,7 +80,7 @@ class Calculator extends React.Component {
       })
     }
     this.updateDisplay('total'); 
-    console.log(this.state);
+    // console.log(this.state);
   }
   clearCalculator = () => {
     this.setState({
@@ -88,7 +89,7 @@ class Calculator extends React.Component {
       display: 0,
       action: ''
     })
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   pushKeyPad = event => {
@@ -96,7 +97,7 @@ class Calculator extends React.Component {
       keyPadSum: this.state.keyPadSum += event.currentTarget.textContent 
     })
     this.updateDisplay('keyPadSum');
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   updateDisplay = (update) => {

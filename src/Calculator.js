@@ -21,11 +21,28 @@ class Calculator extends React.Component {
     //console.log('componentWillMount:', cal_state);
   }  
 
+/**
+ * @method underConstruction
+ * @description place alert for button under construction
+ */
+  underConstruction = () => {
+    alert(`This button does not work right now`); 
+  }
+
+/**
+ * @method clearkeyPadSum
+ * @description clear total and keyPadSum in state
+ */
   clearkeyPadSum = () => {
     this.setState({
     keyPadSum: ''
     })  
   }
+
+/**
+ * @method add
+ * @description add total and action in state from total
+ */
   add = () => {
     this.setState({
     total:  (parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)),
@@ -34,6 +51,11 @@ class Calculator extends React.Component {
     this.clearkeyPadSum();
     // console.log(this.state);
   }
+
+/**
+ * @method subtract
+ * @description subtract total and keyPadSum in state from total
+ */
   subtract = () => {
     this.setState({
     total: parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10),
@@ -42,6 +64,11 @@ class Calculator extends React.Component {
     this.clearkeyPadSum();
     // console.log(this.state);
   }
+
+/**
+ * @method multiply
+ * @description multiply total and keyPadSum in state for total
+ */
   multiply = () => {
     this.setState({
     total: parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10),
@@ -50,6 +77,11 @@ class Calculator extends React.Component {
     this.clearkeyPadSum();
     // console.log(this.state);
   }
+
+/**
+ * @method divide
+ * @description divide total and keyPadSum in state for total
+ */
   divide = () => {
     this.setState({
     total: parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10),
@@ -58,6 +90,11 @@ class Calculator extends React.Component {
     this.clearkeyPadSum();
     // console.log(this.state);
   }
+
+/**
+ * @method equal
+ * @description track and add new state to state
+ */
   equal = () => {
     if (this.state.action === 'add'){
       this.setState({
@@ -82,6 +119,11 @@ class Calculator extends React.Component {
     this.updateDisplay('total'); 
     // console.log(this.state);
   }
+
+/**
+ * @method clearCalcutor
+ * @description clear the state for the calculator
+ */
   clearCalculator = () => {
     this.setState({
       total: 0,
@@ -92,6 +134,10 @@ class Calculator extends React.Component {
     // console.log(this.state);
   }
 
+/**
+ * @method pushKeyPad
+ * @description track key press 
+ */
   pushKeyPad = event => {
     this.setState({
       keyPadSum: this.state.keyPadSum += event.currentTarget.textContent 
@@ -100,6 +146,10 @@ class Calculator extends React.Component {
     // console.log(this.state);
   }
 
+/**
+ * @method updateDisplay
+ * @description update the calculator display 
+ */
   updateDisplay = update => {
     if (update === 'total'){
       this.setState({
@@ -118,8 +168,8 @@ class Calculator extends React.Component {
           <div className="c-cal-wrapper">
             <div className="c-cal_display">{this.state.display}</div> 
             <button type="button" name="clear" onClick={this.clearCalculator} className="btn btn--clear">ac</button>
-            <button type="button" name="pos-neg" className="btn btn--pos-neg">+/-</button>
-            <button type="button" name="percent" className="btn btn--percent">&#37;</button>
+            <button type="button" name="pos-neg" onClick={this.underConstruction} className="btn btn--pos-neg">+/-</button>
+            <button type="button" name="percent" onClick={this.underConstruction} className="btn btn--percent">&#37;</button>
             <button type="button" name="period" onClick={this.pushKeyPad} className="btn btn--period">&#46;</button>    
             <button type="button" name="one" onClick={this.pushKeyPad} className="btn btn--one">1</button>
             <button type="button" name="two" onClick={this.pushKeyPad} className="btn btn--two">2</button>

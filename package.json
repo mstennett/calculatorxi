@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "calculator - test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,13 @@
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https:git@github.com:mstennett/calculatorxi.git"
+  },
+  "author": "Maxwell Stennett",
+  "license": "ISC",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

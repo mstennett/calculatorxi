@@ -2,12 +2,14 @@ import React from 'react';
 import './App.css';
 
 class Calculator extends React.Component {
+
   state = {
       total: 0,
       keyPadSum: '',
       display: 0,
       action: ''
   }
+
   componentWillMount() {
     this.setState({
       total: this.state.total,
@@ -18,96 +20,96 @@ class Calculator extends React.Component {
     console.log('componentWillMount:', this.state);
   }  
 
-clearkeyPadSum = () => {
-  this.setState({
-  keyPadSum: ''
-  })  
-}
-add = (num) => {
-  this.setState({
-  total:  (parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)),
-  action: 'add'
-  })
-  this.clearkeyPadSum();
-  console.log(this.state);
-}
-subtract = (num) => {
-  this.setState({
-  total: parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10),
-  action: 'subtract'
-  })
-  this.clearkeyPadSum();
-  console.log(this.state);
-}
-multiply = (num) => {
-  this.setState({
-  total: parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10),
-  action: 'multiply'
-  })
-  this.clearkeyPadSum();
-  console.log(this.state);
-}
-divide = (num) => {
-  this.setState({
-  total: parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10),
-  action: 'divide'
-  })
-  this.clearkeyPadSum();
-  console.log(this.state);
-}
-equal = () => {
-  if (this.state.action === 'add'){
+  clearkeyPadSum = () => {
     this.setState({
-      total:  parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)
-    })
+    keyPadSum: ''
+    })  
   }
-  if (this.state.action === 'subtract'){
+  add = () => {
     this.setState({
-      total: (parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10))
+    total:  (parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)),
+    action: 'add'
     })
+    this.clearkeyPadSum();
+    console.log(this.state);
   }
-  if (this.state.action === 'multiply'){
+  subtract = () => {
     this.setState({
-      total: (parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10))
+    total: parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10),
+    action: 'subtract'
     })
+    this.clearkeyPadSum();
+    console.log(this.state);
   }
-  if (this.state.action === 'divide'){
+  multiply = () => {
     this.setState({
-      total: (parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10))
+    total: parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10),
+    action: 'multiply'
     })
+    this.clearkeyPadSum();
+    console.log(this.state);
   }
-  this.updateDisplay('total'); 
-  console.log(this.state);
-}
-clearCalculator = (event) => {
-  this.setState({
-    total: 0,
-    keyPadSum: '',
-    display: 0,
-    action: ''
-  })
-  console.log(this.state);
-}
+  divide = () => {
+    this.setState({
+    total: parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10),
+    action: 'divide'
+    })
+    this.clearkeyPadSum();
+    console.log(this.state);
+  }
+  equal = () => {
+    if (this.state.action === 'add'){
+      this.setState({
+        total:  parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)
+      })
+    }
+    if (this.state.action === 'subtract'){
+      this.setState({
+        total: (parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10))
+      })
+    }
+    if (this.state.action === 'multiply'){
+      this.setState({
+        total: (parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10))
+      })
+    }
+    if (this.state.action === 'divide'){
+      this.setState({
+        total: (parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10))
+      })
+    }
+    this.updateDisplay('total'); 
+    console.log(this.state);
+  }
+  clearCalculator = () => {
+    this.setState({
+      total: 0,
+      keyPadSum: '',
+      display: 0,
+      action: ''
+    })
+    console.log(this.state);
+  }
 
-pushKeyPad = event => {
-  this.setState({
-    keyPadSum: this.state.keyPadSum += event.currentTarget.textContent 
-  })
-  this.updateDisplay('keyPadSum');
-  console.log(this.state);
-}
-
-updateDisplay = (update) => {
-  if (update === 'total'){
+  pushKeyPad = event => {
     this.setState({
-      display: this.state.total
+      keyPadSum: this.state.keyPadSum += event.currentTarget.textContent 
     })
-    return;
+    this.updateDisplay('keyPadSum');
+    console.log(this.state);
   }
-  this.setState({
-    display: this.state.keyPadSum
-  })
-}
+
+  updateDisplay = (update) => {
+    if (update === 'total'){
+      this.setState({
+        display: this.state.total
+      })
+      return;
+    }
+    this.setState({
+      display: this.state.keyPadSum
+    })
+  }
   
   render() {
     return (

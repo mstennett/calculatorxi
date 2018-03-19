@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 
 class Calculator extends React.Component {
-
   state = {
       total: 0,
       keyPadSum: '',
@@ -39,7 +38,6 @@ subtract = (num) => {
   })
   this.clearkeyPadSum();
   console.log(this.state);
-
 }
 multiply = (num) => {
   this.setState({
@@ -114,36 +112,30 @@ updateDisplay = (update) => {
   render() {
     return (
         <section className="c-cal-section">
-
           <div className="c-cal-wrapper">
             <div className="c-cal_display">{this.state.display}</div> 
-
-            <button onClick={this.clearCalculator} className="btn btn--clear">ac</button>
-            <button className="btn btn--pos-neg">+/-</button>
-            <button className="btn btn--percent">&#37;</button>
-            <button onClick={this.pushKeyPad} className="btn btn--period">&#46;</button>
-          
-            <button onClick={this.pushKeyPad} className="btn btn--one">1</button>
-            <button onClick={this.pushKeyPad} className="btn btn--two">2</button>
-            <button onClick={this.pushKeyPad} className="btn btn--three">3</button>
-            <button onClick={this.pushKeyPad} className="btn btn--four">4</button>
-            <button onClick={this.pushKeyPad} className="btn btn--five">5</button>
-            <button onClick={this.pushKeyPad} className="btn btn--six">6</button>
-            <button onClick={this.pushKeyPad} className="btn btn--seven">7</button>
-            <button onClick={this.pushKeyPad} className="btn btn--eight">8</button>
-            <button onClick={this.pushKeyPad} className="btn btn--nine">9</button>
-            <button onClick={this.pushKeyPad} className="btn btn--zero">0</button>
-            
-            <button onClick={this.divide} className="btn btn--divide">&#247;</button>
-            <button onClick={this.multiply} className="btn btn--multiply">&#215;</button>
-            <button onClick={this.subtract} className="btn btn--subtract">&#8722;</button>
-            <button onClick={this.add} className="btn btn--add">&#43;</button>
-            <button onClick={this.equal} className="btn btn--equal">&#61;</button>
+            <button name="clear" onClick={this.clearCalculator} className="btn btn--clear">ac</button>
+            <button name="pos-neg" className="btn btn--pos-neg">+/-</button>
+            <button name="percent" className="btn btn--percent">&#37;</button>
+            <button name="period" onClick={this.pushKeyPad} className="btn btn--period">&#46;</button>    
+            <button name="one" onClick={this.pushKeyPad} className="btn btn--one">1</button>
+            <button name="two" onClick={this.pushKeyPad} className="btn btn--two">2</button>
+            <button name="three" onClick={this.pushKeyPad} className="btn btn--three">3</button>
+            <button name="four" onClick={this.pushKeyPad} className="btn btn--four">4</button>
+            <button name="five" onClick={this.pushKeyPad} className="btn btn--five">5</button>
+            <button name="six" onClick={this.pushKeyPad} className="btn btn--six">6</button>
+            <button name="seven" onClick={this.pushKeyPad} className="btn btn--seven">7</button>
+            <button name="eight" onClick={this.pushKeyPad} className="btn btn--eight">8</button>
+            <button name="nine" onClick={this.pushKeyPad} className="btn btn--nine">9</button>
+            <button name="zero" onClick={this.pushKeyPad} className="btn btn--zero">0</button>            
+            <button name="divide" onClick={this.divide} className="btn btn--divide">&#247;</button>
+            <button name="multiply" onClick={this.multiply} className="btn btn--multiply">&#215;</button>
+            <button name="subtract" onClick={this.subtract} className="btn btn--subtract">&#8722;</button>
+            <button name="add" onClick={this.add} className="btn btn--add">&#43;</button>
+            <button name="equal" onClick={this.equal} className="btn btn--equal">&#61;</button>
           </div>
         </section>
-
-    
-    );
+    )
   }
 }
 

@@ -1,0 +1,198 @@
+
+/* ----------- 
+calculator - vars
+----------- */
+:root{
+  
+  /* calulator - default */ 
+  --calDisplayBkgd: #282828;
+  --gray: gray;
+  --white: white;
+  --black: black;
+    
+   /* font */   
+  --calFontFamily: arial;
+    
+  /* btns */   
+  --grayBtn: lightgray;
+  --grayBtnSize: 1rem;
+  --grayBtn--hover: #bebebe;
+  --grayBtnFontColor: --black;
+  --grayBtnFontColor--hover: --gray;
+    
+  --orangeBtn: orange; 
+  --orangeBtnsize: 1.5rem;
+  --orangeBtn--hover: #cc8400;
+  --orangeBtnFontColor: #fff;  
+  --orangeBtnFontColor--hover: --gray;
+  }
+  
+  /* ----------- 
+  calculator 
+  ----------- */
+  .c-cal-section {
+    margin: 0 auto;
+    padding: 5px 0 50px 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .c-cal-wrapper { 
+    /* width: 370px; */
+    border-radius: 0.3rem;
+    border: 0.2rem solid var(--black);
+    background-color: var(--gray);
+    font-family: var(--calFontFamily);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    display: grid;
+    grid-gap: 0.09rem 0.09rem;
+    
+    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(4,1fr);
+  }
+  
+  .c-cal_display {
+    background-color: var(--calDisplayBkgd);
+    color: white;
+    
+    line-height: 50px;
+    font-size: 2rem;
+    text-align: right;
+    padding-right: 0.5rem;
+    
+    grid-row: 1;
+    grid-column: 1/5;
+  }
+  
+  /* -----------
+  buttons 
+  ----------- */
+  
+  .btn {
+    background-color: var(--grayBtn);
+    line-height: 50px;
+    font-size: var(--grayBtnSize);
+    height: 50px;
+    padding: 2px;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: var(--grayBtn--hover);
+    color: var(--gray);
+  }
+  
+  .btn--multiply,
+  .btn--divide,
+  .btn--subtract,
+  .btn--add,
+  .btn--equal {
+    background-color: var(--orangeBtn);
+    color: var(--white);
+    font-size: var(--orangeBtnsize);
+  }
+  
+  .btn--multiply:hover,
+  .btn--divide:hover,
+  .btn--subtract:hover,
+  .btn--add:hover,
+  .btn--equal:hover {
+    background-color: var(--orangeBtn--hover);
+    color: var(--gray);
+  }
+  
+  .btn--clear {
+    text-transform: uppercase;
+  }
+  
+  /* -----------
+  button - grid items - math
+  ----------- */
+  
+  .btn--divide {
+    grid-row: 2/3;
+    grid-column: 4;
+  }
+  .btn--multiply {
+    grid-row: 3/6;
+    grid-column: 4;
+  }
+  .btn--subtract {
+    grid-row: 4/6;
+    grid-column: 4;
+  }
+  .btn--add {
+    grid-row: 5/6;
+    grid-column: 4;
+  }
+  .btn--equal {
+    grid-row: 6/6;
+    grid-column: 4;
+  }
+  
+  /* -----------
+  button - grid items - results
+  ----------- */
+  
+  .btn--clear {
+    grid-row: 2;
+    grid-column: 1/2;
+  }
+  .btn--pos-neg {
+    grid-row: 2;
+    grid-column: 2/2;
+  }
+  .btn--period {  
+    grid-row: 6;
+    grid-column: 3/3;
+  }
+  .btn--percent {
+    grid-row: 2;
+    grid-column: 3/3;
+  }
+  
+  /* -----------
+  button - grid items 
+  ----------- */
+  
+  .btn--one {
+    grid-row: 5;
+    grid-column: 1/2;
+  }
+  .btn--two {
+    grid-row: 5;
+    grid-column: 2/3;
+  }
+  .btn--three {
+    grid-row: 5;
+    grid-column: 3/3;
+  }
+  .btn--four {
+    grid-row: 4;
+    grid-column: 1/2;
+  }
+  .btn--five {
+    grid-row: 4;
+    grid-column: 2/3;
+  }
+  .btn--six {
+    grid-row: 4;
+    grid-column: 3/3;
+  }
+  .btn--seven {
+    grid-row: 3;
+    grid-column: 1/2;
+  }
+  .btn--eight {
+    grid-row: 3;
+    grid-column: 2/3;
+  }
+  .btn--nine {
+    grid-row: 3;
+    grid-column: 3/3;
+  }
+  .btn--zero {
+    grid-row: 6;
+    grid-column: 1/3;
+  }

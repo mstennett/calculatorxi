@@ -100,7 +100,7 @@ class Calculator extends React.Component {
     // console.log(this.state);
   }
 
-  updateDisplay = (update) => {
+  updateDisplay = update => {
     if (update === 'total'){
       this.setState({
         display: this.state.total

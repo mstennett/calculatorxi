@@ -37,7 +37,8 @@ class Calculator extends React.Component {
     const keyPadSum = "";
     this.setState({ 
       keyPadSum,
-     })  
+     }) 
+     //console.log(this.state);  
   }
 
 /**
@@ -47,14 +48,14 @@ class Calculator extends React.Component {
   add = () => {
     const cal_state_total = this.state.total;
     const cal_state_keyPadSum = this.state.keyPadSum;
-    const total = (parseInt(cal_state_keyPadSum,10) + parseInt(cal_state_total,10));
+    const total = (parseInt(cal_state_total,10) + parseInt(cal_state_keyPadSum,10));
     const action = 'add';
     this.setState({
     total,
     action,
     })
     this.clearkeyPadSum();
-    console.log(this.state);
+    //console.log(this.state);
   }
 
 /**
@@ -64,7 +65,7 @@ class Calculator extends React.Component {
   subtract = () => {
     const cal_state_total = this.state.total;
     const cal_state_keyPadSum = this.state.keyPadSum;
-    const total = parseInt(cal_state_total,10) - parseInt(cal_state_keyPadSum,10);
+    const total =  parseInt(cal_state_keyPadSum,10) - parseInt(cal_state_total,10);
     const action = 'subtract';
     this.setState({
     total,
@@ -96,16 +97,16 @@ class Calculator extends React.Component {
  * @description divide total and keyPadSum in state for total
  */
   divide = () => {
-    const cal_state_total = this.state.total;
+    const cal_state_display = this.state.display;
     const cal_state_keyPadSum = this.state.keyPadSum;
-    const total = parseInt(cal_state_total,10) / parseInt(cal_state_keyPadSum,10);
+    const total = ((parseInt(cal_state_display,10)) / (parseInt(cal_state_keyPadSum,10)));
     const action = 'divide';
     this.setState({
     total,
     action,
     })
     this.clearkeyPadSum();
-    // console.log(this.state);
+    //console.log(this.state);
   }
 
 /**
@@ -116,37 +117,39 @@ class Calculator extends React.Component {
     if (this.state.action === 'add'){
       const cal_state_total = this.state.total;
       const cal_state_keyPadSum = this.state.keyPadSum;
-      const total = parseInt(cal_state_total,10) + parseInt(cal_state_keyPadSum,10);
+      const total = ((parseInt(cal_state_total,10)) + (parseInt(cal_state_keyPadSum,10)));
       this.setState({
         total,
       })
+      //console.log(this.state);
     }
     if (this.state.action === 'subtract'){
       const cal_state_total = this.state.total;
       const cal_state_keyPadSum = this.state.keyPadSum;
-      const total = parseInt(cal_state_total,10) - parseInt(cal_state_keyPadSum,10);
+      const total = ((parseInt(cal_state_keyPadSum,10)) - (parseInt(cal_state_total,10)));
       this.setState({
         total,
       })
     }
     if (this.state.action === 'multiply'){
-      const cal_state_total = this.state.total;
+      const cal_state_display = this.state.display;
       const cal_state_keyPadSum = this.state.keyPadSum;
-      const total = parseInt(cal_state_keyPadSum,10) * parseInt(cal_state_total,10);
+      const total = ((parseInt(cal_state_keyPadSum,10)) * (parseInt(cal_state_display,10)));
       this.setState({
         total,
       })
     }
     if (this.state.action === 'divide'){
-      const cal_state_total = this.state.total;
+      const cal_state_display = this.state.display;
       const cal_state_keyPadSum = this.state.keyPadSum;
-      const total = parseInt(cal_state_total,10) / parseInt(cal_state_keyPadSum,10);
+      const total = ((parseInt(cal_state_display,10)) / (parseInt(cal_state_keyPadSum,10)));
       this.setState({
         total,
       })
     }
-    this.updateDisplay('total'); 
-    // console.log(this.state);
+    this.updateDisplay('total');
+    this.clearkeyPadSum(); 
+    //console.log(this.state);
   }
 
 /**
@@ -172,14 +175,12 @@ class Calculator extends React.Component {
  * @description track key press 
  */
   pushKeyPad = (event) => {
-    let cal_state_keyPadSum = this.state.keyPadSum;
-    let el_keyPadSum = event.currentTarget.textContent;
-    const keyPadSum = cal_state_keyPadSum += el_keyPadSum;
+    const keyPadSum = this.state.keyPadSum += event.currentTarget.textContent;
     this.setState({
-      keyPadSum:keyPadSum
+      keyPadSum,
     })
     this.updateDisplay('keyPadSum');
-    console.log(this.state);
+    //console.log(this.state);
   }
 
 /**
@@ -191,15 +192,15 @@ class Calculator extends React.Component {
     const total = this.state.total;
     if (update === 'total'){
       this.setState({
-        display: total
+        display: total,
       })
     }
     if (update === 'keyPadSum'){
       this.setState({
-        display: keyPadSum
+        display: keyPadSum,
       })
     }
-    console.log(this.state);
+    //console.log(this.state);
   }
   
   render() {

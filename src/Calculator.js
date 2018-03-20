@@ -18,7 +18,7 @@ class Calculator extends React.Component {
       display: cal_state.display,
       action: cal_state.action
     })
-    //console.log('componentWillMount:', cal_state);
+    console.log('componentWillMount:', cal_state);
   }  
 
 /**
@@ -34,9 +34,10 @@ class Calculator extends React.Component {
  * @description clear total and keyPadSum in state
  */
   clearkeyPadSum = () => {
-    this.setState({
-    keyPadSum: ''
-    })  
+    const keyPadSum = "";
+    this.setState({ 
+      keyPadSum,
+     })  
   }
 
 /**
@@ -44,12 +45,16 @@ class Calculator extends React.Component {
  * @description add total and action in state from total
  */
   add = () => {
+    const cal_state_total = this.state.total;
+    const cal_state_keyPadSum = this.state.keyPadSum;
+    const total = (parseInt(cal_state_keyPadSum,10) + parseInt(cal_state_total,10));
+    const action = 'add';
     this.setState({
-    total:  (parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)),
-    action: 'add'
+    total,
+    action,
     })
     this.clearkeyPadSum();
-    // console.log(this.state);
+    console.log(this.state);
   }
 
 /**
@@ -57,9 +62,13 @@ class Calculator extends React.Component {
  * @description subtract total and keyPadSum in state from total
  */
   subtract = () => {
+    const cal_state_total = this.state.total;
+    const cal_state_keyPadSum = this.state.keyPadSum;
+    const total = parseInt(cal_state_total,10) - parseInt(cal_state_keyPadSum,10);
+    const action = 'subtract';
     this.setState({
-    total: parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10),
-    action: 'subtract'
+    total,
+    action,
     })
     this.clearkeyPadSum();
     // console.log(this.state);
@@ -70,9 +79,13 @@ class Calculator extends React.Component {
  * @description multiply total and keyPadSum in state for total
  */
   multiply = () => {
+    const cal_state_total = this.state.total;
+    const cal_state_keyPadSum = this.state.keyPadSum ;
+    const total = parseInt(cal_state_keyPadSum,10) * parseInt(cal_state_total,10);
+    const action = 'multiply';
     this.setState({
-    total: parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10),
-    action: 'multiply'
+    total,
+    action,
     })
     this.clearkeyPadSum();
     // console.log(this.state);
@@ -83,9 +96,13 @@ class Calculator extends React.Component {
  * @description divide total and keyPadSum in state for total
  */
   divide = () => {
+    const cal_state_total = this.state.total;
+    const cal_state_keyPadSum = this.state.keyPadSum;
+    const total = parseInt(cal_state_total,10) / parseInt(cal_state_keyPadSum,10);
+    const action = 'divide';
     this.setState({
-    total: parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10),
-    action: 'divide'
+    total,
+    action,
     })
     this.clearkeyPadSum();
     // console.log(this.state);
@@ -97,23 +114,35 @@ class Calculator extends React.Component {
  */
   equal = () => {
     if (this.state.action === 'add'){
+      const cal_state_total = this.state.total;
+      const cal_state_keyPadSum = this.state.keyPadSum;
+      const total = parseInt(cal_state_total,10) + parseInt(cal_state_keyPadSum,10);
       this.setState({
-        total:  parseInt(this.state.total,10) + parseInt(this.state.keyPadSum,10)
+        total,
       })
     }
     if (this.state.action === 'subtract'){
+      const cal_state_total = this.state.total;
+      const cal_state_keyPadSum = this.state.keyPadSum;
+      const total = parseInt(cal_state_total,10) - parseInt(cal_state_keyPadSum,10);
       this.setState({
-        total: (parseInt(this.state.total,10) - parseInt(this.state.keyPadSum,10))
+        total,
       })
     }
     if (this.state.action === 'multiply'){
+      const cal_state_total = this.state.total;
+      const cal_state_keyPadSum = this.state.keyPadSum;
+      const total = parseInt(cal_state_keyPadSum,10) * parseInt(cal_state_total,10);
       this.setState({
-        total: (parseInt(this.state.keyPadSum,10) * parseInt(this.state.total,10))
+        total,
       })
     }
     if (this.state.action === 'divide'){
+      const cal_state_total = this.state.total;
+      const cal_state_keyPadSum = this.state.keyPadSum;
+      const total = parseInt(cal_state_total,10) / parseInt(cal_state_keyPadSum,10);
       this.setState({
-        total: (parseInt(this.state.total,10) / parseInt(this.state.keyPadSum,10))
+        total,
       })
     }
     this.updateDisplay('total'); 
@@ -125,11 +154,15 @@ class Calculator extends React.Component {
  * @description clear the state for the calculator
  */
   clearCalculator = () => {
+    const total = 0;
+    const keyPadSum = '';
+    const display = 0;
+    const action = '';
     this.setState({
-      total: 0,
-      keyPadSum: '',
-      display: 0,
-      action: ''
+      total,
+      keyPadSum,
+      display,
+      action,
     })
     // console.log(this.state);
   }
@@ -138,12 +171,15 @@ class Calculator extends React.Component {
  * @method pushKeyPad
  * @description track key press 
  */
-  pushKeyPad = event => {
+  pushKeyPad = (event) => {
+    let cal_state_keyPadSum = this.state.keyPadSum;
+    let el_keyPadSum = event.currentTarget.textContent;
+    const keyPadSum = cal_state_keyPadSum += el_keyPadSum;
     this.setState({
-      keyPadSum: this.state.keyPadSum += event.currentTarget.textContent 
+      keyPadSum:keyPadSum
     })
     this.updateDisplay('keyPadSum');
-    // console.log(this.state);
+    console.log(this.state);
   }
 
 /**
@@ -151,15 +187,19 @@ class Calculator extends React.Component {
  * @description update the calculator display 
  */
   updateDisplay = update => {
+    const keyPadSum = this.state.keyPadSum;
+    const total = this.state.total;
     if (update === 'total'){
       this.setState({
-        display: this.state.total
+        display: total
       })
-      return;
     }
-    this.setState({
-      display: this.state.keyPadSum
-    })
+    if (update === 'keyPadSum'){
+      this.setState({
+        display: keyPadSum
+      })
+    }
+    console.log(this.state);
   }
   
   render() {
